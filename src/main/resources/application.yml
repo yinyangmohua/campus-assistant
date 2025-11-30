@@ -2,6 +2,14 @@ server:
   port: 8080
 
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/campus-assisant?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: never
   ai:
     dashscope:
       api-key: ${AI_DASHSCOPE_API_KEY}
