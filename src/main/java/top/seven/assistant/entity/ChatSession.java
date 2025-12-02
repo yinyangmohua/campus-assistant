@@ -1,45 +1,44 @@
-package top.seven.assistant.model;
+package top.seven.assistant.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
-@TableName("t_user")
-public class User {
+@Builder
+@TableName("t_chat_session")
+public class ChatSession {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @TableField("user_number")
-    private String userNumber;
+    @TableField("user_id")
+    private Long userId;
 
-    @TableField("password")
-    private String password;
+    @TableField("title")
+    private String title;
 
-    @TableField("mobile")
-    private String mobile;
+    @TableField("last_msg_preview")
+    private String lastMsgPreview;
 
-    @TableField("nickname")
-    private String nickname;
+    @TableField("last_msg_time")
+    private LocalDateTime lastMsgTime;
 
-    @TableField("avatar_url")
-    private String avatarUrl;
+    @TableField("unread_count")
+    private Integer unreadCount;
 
-    @TableField("sdept")
-    private String sdept;
-
-    @TableField("user_type")
-    private Integer userType;
+    @TableField("is_pinned")
+    private Integer isPinned;
 
     @TableField("created_time")
     private LocalDateTime createdTime;
-
+    
     @TableField("updated_time")
     private LocalDateTime updatedTime;
 
@@ -47,3 +46,4 @@ public class User {
     @TableField("deleted")
     private Boolean deleted;
 }
+

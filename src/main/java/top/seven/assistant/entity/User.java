@@ -1,4 +1,4 @@
-package top.seven.assistant.model;
+package top.seven.assistant.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,33 +12,36 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-@TableName("t_chat_session")
-public class ChatSession {
+@TableName("t_user")
+public class User {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @TableField("user_id")
-    private Long userId;
+    @TableField("user_number")
+    private String userNumber;
 
-    @TableField("title")
-    private String title;
+    @TableField("password")
+    private String password;
 
-    @TableField("last_msg_preview")
-    private String lastMsgPreview;
+    @TableField("mobile")
+    private String mobile;
 
-    @TableField("last_msg_time")
-    private LocalDateTime lastMsgTime;
+    @TableField("nickname")
+    private String nickname;
 
-    @TableField("unread_count")
-    private Integer unreadCount;
+    @TableField("avatar_url")
+    private String avatarUrl;
 
-    @TableField("is_pinned")
-    private Integer isPinned;
+    @TableField("sdept")
+    private String sdept;
+
+    @TableField("user_type")
+    private Integer userType;
 
     @TableField("created_time")
     private LocalDateTime createdTime;
-    
+
     @TableField("updated_time")
     private LocalDateTime updatedTime;
 
@@ -46,4 +49,3 @@ public class ChatSession {
     @TableField("deleted")
     private Boolean deleted;
 }
-

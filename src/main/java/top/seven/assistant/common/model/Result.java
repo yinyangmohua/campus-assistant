@@ -1,8 +1,9 @@
-package top.seven.assistant.model;
+package top.seven.assistant.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import top.seven.assistant.common.constant.RequestCode;
 
 @Data
 @NoArgsConstructor

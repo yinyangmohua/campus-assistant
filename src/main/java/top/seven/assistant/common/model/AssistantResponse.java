@@ -1,4 +1,4 @@
-package top.seven.assistant.model;
+package top.seven.assistant.common.model;
 
 import lombok.Data;
 

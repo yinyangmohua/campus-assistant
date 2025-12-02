@@ -1,8 +1,8 @@
-package top.seven.assistant.exception;
+package top.seven.assistant.common.exception;
 
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import top.seven.assistant.model.RequestCode;
+import top.seven.assistant.common.constant.RequestCode;
 
 @Getter
 public class BusinessException extends RuntimeException {

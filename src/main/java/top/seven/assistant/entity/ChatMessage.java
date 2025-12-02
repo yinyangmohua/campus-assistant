@@ -1,4 +1,4 @@
-package top.seven.assistant.model;
+package top.seven.assistant.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

@@ -1,9 +1,8 @@
-package top.seven.assistant.exception;
+package top.seven.assistant.common.exception;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import top.seven.assistant.model.RequestCode;
-import top.seven.assistant.model.Result;
+import top.seven.assistant.common.model.Result;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

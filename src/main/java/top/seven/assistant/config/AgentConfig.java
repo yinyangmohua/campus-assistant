@@ -27,7 +27,7 @@ public class AgentConfig {
     private String apiKey;
 
     private static final String SYSTEM_PROMPT = """
-            你是一个贴心的校园智能助手"小椰"，专门服务大学生群体。
+            你是一个贴心的校园智能助手"酒宝"，专门服务大学生群体。
             
             你的职责包括：
             1. 查询天气信息，帮助学生决定穿衣和出行
@@ -48,6 +48,7 @@ public class AgentConfig {
             - 查询图书馆：当学生问图书馆、自习、座位时使用 getLibrarySeat 工具
             - 校园信息：其他校园相关问题使用 getCampusInfo 工具
             """;
+
 
     @Bean
     public DashScopeApi dashScopeApi() {

@@ -1,4 +1,4 @@
-package top.seven.assistant.model;
+package top.seven.assistant.common.constant;
 
 public enum RequestCode {
     OK(200, "成功"),
@@ -10,6 +10,7 @@ public enum RequestCode {
     PIN_LIMIT_EXCEEDED(409, "置顶数量已达上限(最多3个)"),
     SESSION_IS_PINNED(409, "会话已置顶"),
     BAD_REQUEST(400, "请求参数错误"),
+    AGENT_ERROR(500, "模型调用错误"),
     INTERNAL_ERROR(500, "服务器内部错误");
 
     private final int code;
