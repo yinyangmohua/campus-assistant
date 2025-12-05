@@ -2,6 +2,7 @@ package top.seven.assistant.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import top.seven.assistant.common.exception.BusinessException;
 import top.seven.assistant.mapper.ChatMessageMapper;
@@ -14,15 +15,10 @@ import top.seven.assistant.common.constant.RequestCode;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ChatSessionServiceImpl implements ChatSessionService {
-
     private final ChatSessionMapper chatSessionMapper;
     private final ChatMessageMapper chatMessageMapper;
-
-    public ChatSessionServiceImpl(ChatSessionMapper chatSessionMapper, ChatMessageMapper chatMessageMapper) {
-        this.chatSessionMapper = chatSessionMapper;
-        this.chatMessageMapper = chatMessageMapper;
-    }
 
     @Override
     public Long createSession(Long userId, String title) {

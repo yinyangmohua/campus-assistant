@@ -1,22 +1,23 @@
 package top.seven.assistant.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import top.seven.assistant.common.constant.RedisKey;
 import top.seven.assistant.common.exception.BusinessException;
 import top.seven.assistant.mapper.UserMapper;
 import top.seven.assistant.common.constant.RequestCode;
 import top.seven.assistant.entity.User;
 
 @Service
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-
     private final UserMapper userMapper;
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final RedisService redisService;
 
-    public AuthServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
     public void login(String userNumber, String password) {
@@ -30,7 +31,6 @@ public class AuthServiceImpl implements AuthService {
             throw new BusinessException(RequestCode.USER_NOT_FOUND);
         }
         String encoded = user.getPassword();
-        System.out.println(encoded);
         if (encoded == null || encoded.isEmpty()) {
             throw new BusinessException(RequestCode.INVALID_CREDENTIALS);
         }
@@ -61,5 +61,13 @@ public class AuthServiceImpl implements AuthService {
                 .password(newEncoded)
                 .build();
         userMapper.updateById(newPwd);
+    }
+
+    @Override
+    public void sendLoginCode(String mobile) {
+        String code = String.format("%04d", java.util.concurrent.ThreadLocalRandom.current().nextInt(10000));
+        String key = RedisKey.LOGIN_CODE.format(mobile);
+        redisService.set(key, code);
+        redisService.expire(key, 60);
     }
 }

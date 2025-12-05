@@ -26,6 +26,12 @@ public class AuthController {
         return Result.success("密码修改成功");
     }
 
+    @PostMapping("/mobile/code")
+    public Result<String> sendMobileCode(@RequestBody MobileCodeReq req) {
+        authService.sendLoginCode(req.getMobile());
+        return Result.success("验证码发送成功");
+    }
+
     @Data
     public static class LoginReq {
         private String userNumber;
@@ -37,5 +43,10 @@ public class AuthController {
         private String userNumber;
         private String currentPassword;
         private String newPassword;
+    }
+
+    @Data
+    public static class MobileCodeReq {
+        private String mobile;
     }
 }

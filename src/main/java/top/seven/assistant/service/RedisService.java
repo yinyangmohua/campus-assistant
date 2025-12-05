@@ -3,6 +3,7 @@ package top.seven.assistant.service;
 import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class RedisService {
@@ -15,6 +16,7 @@ public class RedisService {
         redisTemplate.opsForValue().set(key, value);
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T get(String key) {
         return (T) redisTemplate.opsForValue().get(key);
     }
@@ -28,12 +30,17 @@ public class RedisService {
         redisTemplate.opsForHash().put(key, field, value);
     }
 
+    @SuppressWarnings("unchecked")
     public <T> T hGet(String key, String field) {
         return (T) redisTemplate.opsForHash().get(key, field);
     }
 
-//    /* 过期 */
-//    public Boolean expire(String key, long seconds) {
-//        return redisTemplate.expire(key, seconds, TimeUnit.SECONDS);
-//    }
+    public Long getId(String key) {
+        return redisTemplate.opsForValue().increment(key);
+    }
+
+    /* 过期 */
+    public Boolean expire(String key, long seconds) {
+        return redisTemplate.expire(key, seconds, TimeUnit.SECONDS);
+    }
 }

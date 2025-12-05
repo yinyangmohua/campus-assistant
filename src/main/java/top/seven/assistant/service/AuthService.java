@@ -6,4 +6,6 @@ public interface AuthService {
     String encodePassword(String raw);
 
     void resetPassword(String userNumber, String currentPassword, String newPassword);
+
+    void sendLoginCode(String mobile);
 }
